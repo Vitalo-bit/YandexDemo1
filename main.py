@@ -22,6 +22,7 @@ class YandexApp(QtWidgets.QMainWindow):
     def trigger_stage_1(self):
         self.content_1.setVisible(True)
         self.content_2.setVisible(False)
+        self.content_3.setVisible(False)
         self.openFileBtn.clicked.connect(self.get_csv)
         self.openFileBtn.setStyleSheet("background: #c3fb12; font-size: 20px; padding: 9px; border-radius: 10px;")
         self.progressBar.setValue(0)
@@ -43,7 +44,32 @@ class YandexApp(QtWidgets.QMainWindow):
         self.open_csv()
         self.content_1.setVisible(False)
         self.content_2.setVisible(True)
+        self.content_3.setVisible(False)
+        self.stage_1.setChecked(False)
+        self.stage_1.setEnabled(False)
+        self.stage_2.setChecked(True)
+        self.stage_2.setEnabled(True)
+        self.stage_3.setChecked(False)
+        self.stage_3.setEnabled(False)
+        self.stage_4.setChecked(False)
+        self.stage_4.setEnabled(False)
         self.progressBar.setValue(30)
+
+    def trigger_stage_3(self):
+        # self.content_1.hide()
+        self.open_csv()
+        self.content_1.setVisible(False)
+        self.content_2.setVisible(False)
+        self.content_3.setVisible(True)
+        self.progressBar.setValue(59)
+        self.stage_1.setChecked(False)
+        self.stage_1.setEnabled(False)
+        self.stage_2.setChecked(False)
+        self.stage_2.setEnabled(False)
+        self.stage_3.setChecked(True)
+        self.stage_3.setEnabled(True)
+        self.stage_4.setChecked(False)
+        self.stage_4.setEnabled(False)
 
     def get_csv(self):
         self.my_csv_path = QFileDialog.getOpenFileName(self, 'Выбрать файл с данными', '')[0]
@@ -90,6 +116,7 @@ class YandexApp(QtWidgets.QMainWindow):
         self.chooseDataRepresentation.setStyleSheet("background: #c3fb12; font-size: 20px; padding: 9px; "
                                                     "border-radius: 10px; "
                                                     "color: #000000;")
+        self.chooseDataRepresentation.clicked.connect(self.trigger_stage_3)
 
 
 def main(name):
