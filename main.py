@@ -118,6 +118,24 @@ class YandexApp(QtWidgets.QMainWindow):
                                                     "color: #000000;")
         self.chooseDataRepresentation.clicked.connect(self.trigger_stage_3)
 
+    def get_column_data(self):
+        shown_data = []
+        i = -1
+        data_content_layout = Qt.QVBoxLayout()
+        aw = Qt.QWidget()
+        aw.setLayout(data_content_layout)
+        self.data_area.setWidget(aw)
+        for row in self.csv_data:
+            i += 1
+            if i < 1:
+                next()
+            value = row[self.chosenColumn[1]]
+            print(value)
+            # shown_data.append(row[self.chosenColumn[1]])
+            row_label = QLabel(value)
+            data_content_layout.addWidget(row_label)
+
+
 
 def main(name):
     app = QtWidgets.QApplication(sys.argv)
