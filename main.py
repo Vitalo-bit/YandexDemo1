@@ -69,9 +69,9 @@ class YandexApp(QtWidgets.QMainWindow):
             column_label = QPushButton(x)
             self.csv_data_buttons.append(column_label)
             column_label.clicked.connect(lambda: self.choose_data_row(id))
-
             data_layout.addWidget(column_label)
             id += 1
+
         w = Qt.QWidget()
         w.setLayout(data_layout)
         self.data_columns_area.setWidget(w)
@@ -83,6 +83,9 @@ class YandexApp(QtWidgets.QMainWindow):
             x.setStyleSheet("background: #000;")
 
         self.sender().setStyleSheet("background: #FFFFFF; color: #000;")
+        self.chooseDataRepresentation.setStyleSheet("background: #c3fb12; font-size: 20px; padding: 9px; "
+                                                    "border-radius: 10px; "
+                                                    "color: #000000;")
 
 
 def main(name):

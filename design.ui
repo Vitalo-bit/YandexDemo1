@@ -302,10 +302,18 @@
         <height>409</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout"/>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
-    <widget class="QPushButton" name="chooseDataRows_2">
+    <widget class="QPushButton" name="chooseDataRepresentation">
      <property name="enabled">
       <bool>true</bool>
      </property>
@@ -321,7 +329,7 @@
       <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="toolTip">
-      <string>Перейти к обработке файла</string>
+      <string>Перейти к выбору отображения данных</string>
      </property>
      <property name="styleSheet">
       <string notr="true">background: transparent; color: #888; border: 1px solid #aaa; border-radius: 10px;  font-size: 20px; padding: 9px; </string>
@@ -333,6 +341,19 @@
       <bool>false</bool>
      </property>
     </widget>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>380</y>
+      <width>451</width>
+      <height>391</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
