@@ -1,8 +1,11 @@
 import sys
 import csv
-from PyQt5 import QtWidgets, uic, Qt
-from PyQt5.QtWidgets import QApplication, QFileDialog, QLabel, QPushButton
+from PyQt5 import QtWidgets, uic, Qt, QtGui
+from PyQt5.QtCore import QPointF
+from PyQt5.QtGui import QPainter
 
+from PyQt5.QtWidgets import QApplication, QFileDialog, QLabel, QPushButton
+from PyQt5.QtChart import QChart, QChartView, QLineSeries
 
 class YandexApp(QtWidgets.QMainWindow):
     def __init__(self):
@@ -24,6 +27,7 @@ class YandexApp(QtWidgets.QMainWindow):
         self.content_1.setVisible(True)
         self.content_2.setVisible(False)
         self.content_3.setVisible(False)
+        self.content_4.setVisible(False)
         self.openFileBtn.clicked.connect(self.get_csv)
         self.openFileBtn.setStyleSheet("background: #c3fb12; font-size: 20px; padding: 9px; border-radius: 10px;")
         self.progressBar.setValue(0)
@@ -46,6 +50,7 @@ class YandexApp(QtWidgets.QMainWindow):
         self.content_1.setVisible(False)
         self.content_2.setVisible(True)
         self.content_3.setVisible(False)
+        self.content_4.setVisible(False)
         self.stage_1.setChecked(False)
         self.stage_1.setEnabled(False)
         self.stage_2.setChecked(True)
@@ -61,6 +66,7 @@ class YandexApp(QtWidgets.QMainWindow):
         self.content_1.setVisible(False)
         self.content_2.setVisible(False)
         self.content_3.setVisible(True)
+        self.content_4.setVisible(False)
         self.progressBar.setValue(59)
         self.stage_1.setChecked(False)
         self.stage_1.setEnabled(False)
@@ -70,7 +76,55 @@ class YandexApp(QtWidgets.QMainWindow):
         self.stage_3.setEnabled(True)
         self.stage_4.setChecked(False)
         self.stage_4.setEnabled(False)
+        self.chooseDataRepresentation_2.clicked.connect(self.trigger_stage_4)
 
+    def trigger_stage_4(self):
+        # self.get_column_data()
+        self.content_1.setVisible(False)
+        self.content_2.setVisible(False)
+        self.content_3.setVisible(False)
+        self.content_4.setVisible(True)
+        self.progressBar.setValue(99)
+        self.stage_1.setChecked(False)
+        self.stage_1.setEnabled(False)
+        self.stage_2.setChecked(False)
+        self.stage_2.setEnabled(False)
+        self.stage_3.setChecked(False)
+        self.stage_3.setEnabled(False)
+        self.stage_4.setChecked(True)
+        self.stage_4.setEnabled(True)
+
+        series = QLineSeries(self)
+        series.append(0, 6)
+        series.append(2, 4)
+        series.append(3, 8)
+        series.append(7, 4)
+        series.append(10, 5)
+        series << QPointF(11, 1) << QPointF(13, 3) << QPointF(17, 6) << QPointF(18, 3) << QPointF(20, 2)
+        chart = QChart()
+        #
+        chart.addSeries(series)
+        chart.createDefaultAxes()
+        chart.setAnimationOptions(QChart.SeriesAnimations)
+        chart.setTitle(self.chosenColumn[0])
+        #
+        chart.legend().setVisible(True)
+
+
+        # chart.legend().setAlignment(Qt.AlignBottom)
+        #
+        chartview = QChartView(chart)
+        chartview.setRenderHint(QPainter.Antialiasing)
+
+        self.content_4.layout = QtWidgets.QVBoxLayout(self)
+        self.content_4.layout.addWidget(chartview)
+
+        # layout = QtGui.QVBoxLayout()
+        # layout.addWidget(self.content_4)
+        # self.setLayout(layout)
+
+        self.setCentralWidget(chartview)
+        # self.content_4.se
 
     def get_csv(self):
         self.my_csv_path = QFileDialog.getOpenFileName(self, 'Выбрать файл с данными', '')[0]

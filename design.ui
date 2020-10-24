@@ -367,6 +367,9 @@
       <height>541</height>
      </rect>
     </property>
+    <property name="visible">
+     <bool>false</bool>
+    </property>
     <property name="styleSheet">
      <string notr="true">background: #000000; color: #ffffff;</string>
     </property>
@@ -480,6 +483,25 @@
       <bool>false</bool>
      </property>
     </widget>
+   </widget>
+   <widget class="QFrame" name="content_4">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>20</y>
+      <width>801</width>
+      <height>551</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: #000;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
