@@ -64,6 +64,9 @@
       <height>541</height>
      </rect>
     </property>
+    <property name="visible">
+     <bool>false</bool>
+    </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
@@ -240,6 +243,44 @@
     <property name="text">
      <string>Выгрузка</string>
     </property>
+   </widget>
+   <widget class="QFrame" name="content_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>20</y>
+      <width>801</width>
+      <height>541</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: #000; color: #fff;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>0</y>
+       <width>541</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 30px; color: #ffffff;</string>
+     </property>
+     <property name="text">
+      <string>В файле обнаружены следующие столбцы данных</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
