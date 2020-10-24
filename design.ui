@@ -281,6 +281,58 @@
       <bool>true</bool>
      </property>
     </widget>
+    <widget class="QScrollArea" name="data_columns_area">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>100</y>
+       <width>471</width>
+       <height>411</height>
+      </rect>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>469</width>
+        <height>409</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout"/>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="chooseDataRows_2">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>260</y>
+       <width>281</width>
+       <height>60</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="toolTip">
+      <string>Перейти к обработке файла</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: transparent; color: #888; border: 1px solid #aaa; border-radius: 10px;  font-size: 20px; padding: 9px; </string>
+     </property>
+     <property name="text">
+      <string>ПРОДОЛЖИТЬ</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

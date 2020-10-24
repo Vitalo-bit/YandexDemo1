@@ -1,12 +1,15 @@
 import sys
 import csv
-from PyQt5 import QtWidgets, uic
-from PyQt5.QtWidgets import QApplication, QFileDialog
+from PyQt5 import QtWidgets, uic, Qt
+from PyQt5.QtWidgets import QApplication, QFileDialog, QLabel, QPushButton
 
 
 class YandexApp(QtWidgets.QMainWindow):
     def __init__(self):
         self.my_csv_path = ""
+        self.csv_reader = None
+        self.csv_data = None
+        self.csv_data_buttons = []
         super().__init__()
         uic.loadUi("design.ui", self)
         self.setup_ui()
@@ -35,7 +38,10 @@ class YandexApp(QtWidgets.QMainWindow):
         self.update()
 
     def trigger_stage_2(self):
-        self.content_1.hide()
+        # self.content_1.hide()
+        self.open_csv()
+        self.content_1.setVisible(False)
+        self.content_2.setVisible(True)
         self.progressBar.setValue(30)
 
     def get_csv(self):
@@ -48,7 +54,32 @@ class YandexApp(QtWidgets.QMainWindow):
                                        "font-size: 20px; padding: 9px; border-radius: 10px;")
         self.chooseDataRows.clicked.connect(self.trigger_stage_2)
 
-    # def open_csv(self):
+    def open_csv(self):
+        # csv_file = open(self.my_csv_path, "r")
+        with open(self.my_csv_path, newline='') as f:
+            self.csv_reader = csv.reader(f, delimiter=',')
+            self.csv_data = list(self.csv_reader)
+            # object =
+            # self.vbox.addWidget(object)
+        print(self.csv_data[0])
+        data_layout = Qt.QVBoxLayout()
+        self.csv_data_buttons.clear()
+        for x in self.csv_data[0]:
+            column_label = QPushButton(x)
+            column_label.clicked.connect(lambda: self.choose_data_row(column_label))
+            self.csv_data_buttons.append(column_label)
+            data_layout.addWidget(column_label)
+        w = Qt.QWidget()
+        w.setLayout(data_layout)
+        self.data_columns_area.setWidget(w)
+
+    def choose_data_row(self, label_to_trigger):
+        print(label_to_trigger)
+        for x in self.csv_data_buttons:
+            # print(x)
+            x.setStyleSheet("background: #000;")
+        label_to_trigger.setStyleSheet("background: #FFFFFF; color: #000;")
+        label_to_trigger.update()
 
 
 def main(name):
