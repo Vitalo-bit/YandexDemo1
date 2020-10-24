@@ -10,6 +10,7 @@ class YandexApp(QtWidgets.QMainWindow):
         self.csv_reader = None
         self.csv_data = None
         self.csv_data_buttons = []
+        self.chosenColumn = None
         super().__init__()
         uic.loadUi("design.ui", self)
         self.setup_ui()
@@ -68,7 +69,7 @@ class YandexApp(QtWidgets.QMainWindow):
         for x in self.csv_data[0]:
             column_label = QPushButton(x)
             self.csv_data_buttons.append(column_label)
-            column_label.clicked.connect(lambda: self.choose_data_row(id))
+            column_label.clicked.connect(lambda: self.choose_data_row())
             data_layout.addWidget(column_label)
             id += 1
 
@@ -76,12 +77,15 @@ class YandexApp(QtWidgets.QMainWindow):
         w.setLayout(data_layout)
         self.data_columns_area.setWidget(w)
 
-    def choose_data_row(self, id):
-        print(id)
+    def choose_data_row(self):
+        chosen_column_index = 0
         for x in self.csv_data_buttons:
             # print(x)
             x.setStyleSheet("background: #000;")
-
+            if x == self.sender():
+                self.chosenColumn = [x.text(), chosen_column_index]
+                # print(self.chosenColumn)
+            chosen_column_index += 1
         self.sender().setStyleSheet("background: #FFFFFF; color: #000;")
         self.chooseDataRepresentation.setStyleSheet("background: #c3fb12; font-size: 20px; padding: 9px; "
                                                     "border-radius: 10px; "
