@@ -64,22 +64,25 @@ class YandexApp(QtWidgets.QMainWindow):
         print(self.csv_data[0])
         data_layout = Qt.QVBoxLayout()
         self.csv_data_buttons.clear()
+        id = 0
         for x in self.csv_data[0]:
             column_label = QPushButton(x)
-            column_label.clicked.connect(lambda: self.choose_data_row(column_label))
             self.csv_data_buttons.append(column_label)
+            column_label.clicked.connect(lambda: self.choose_data_row(id))
+
             data_layout.addWidget(column_label)
+            id += 1
         w = Qt.QWidget()
         w.setLayout(data_layout)
         self.data_columns_area.setWidget(w)
 
-    def choose_data_row(self, label_to_trigger):
-        print(label_to_trigger)
+    def choose_data_row(self, id):
+        print(id)
         for x in self.csv_data_buttons:
             # print(x)
             x.setStyleSheet("background: #000;")
-        label_to_trigger.setStyleSheet("background: #FFFFFF; color: #000;")
-        label_to_trigger.update()
+
+        self.sender().setStyleSheet("background: #FFFFFF; color: #000;")
 
 
 def main(name):
