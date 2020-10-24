@@ -11,6 +11,7 @@ class YandexApp(QtWidgets.QMainWindow):
         self.csv_data = None
         self.csv_data_buttons = []
         self.chosenColumn = None
+        self.csv_data = []
         super().__init__()
         uic.loadUi("design.ui", self)
         self.setup_ui()
@@ -56,8 +57,7 @@ class YandexApp(QtWidgets.QMainWindow):
         self.progressBar.setValue(30)
 
     def trigger_stage_3(self):
-        # self.content_1.hide()
-        self.open_csv()
+        self.get_column_data()
         self.content_1.setVisible(False)
         self.content_2.setVisible(False)
         self.content_3.setVisible(True)
@@ -70,6 +70,7 @@ class YandexApp(QtWidgets.QMainWindow):
         self.stage_3.setEnabled(True)
         self.stage_4.setChecked(False)
         self.stage_4.setEnabled(False)
+
 
     def get_csv(self):
         self.my_csv_path = QFileDialog.getOpenFileName(self, 'Выбрать файл с данными', '')[0]
@@ -121,20 +122,22 @@ class YandexApp(QtWidgets.QMainWindow):
     def get_column_data(self):
         shown_data = []
         i = -1
-        data_content_layout = Qt.QVBoxLayout()
-        aw = Qt.QWidget()
-        aw.setLayout(data_content_layout)
-        self.data_area.setWidget(aw)
+        # data_content_layout = Qt.QVBoxLayout()
+        # aw = Qt.QWidget()
+        # aw.setLayout(data_content_layout)
+        # self.data_area.setWidget(aw)
+        # print(len(self.csv_data))
         for row in self.csv_data:
             i += 1
             if i < 1:
-                next()
+                continue
+            # print(row)
+            # print(self.chosenColumn[1])
             value = row[self.chosenColumn[1]]
             print(value)
             # shown_data.append(row[self.chosenColumn[1]])
-            row_label = QLabel(value)
-            data_content_layout.addWidget(row_label)
-
+            # row_label = QLabel(value)
+            # data_content_layout.addWidget(row_label)
 
 
 def main(name):
