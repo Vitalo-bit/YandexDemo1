@@ -122,11 +122,12 @@ class YandexApp(QtWidgets.QMainWindow):
     def get_column_data(self):
         shown_data = []
         i = -1
-        # data_content_layout = Qt.QVBoxLayout()
-        # aw = Qt.QWidget()
-        # aw.setLayout(data_content_layout)
-        # self.data_area.setWidget(aw)
+        data_content_layout = Qt.QVBoxLayout()
+        aw = Qt.QWidget()
+        aw.setLayout(data_content_layout)
+        self.data_area.setWidget(aw)
         # print(len(self.csv_data))
+        data = []
         for row in self.csv_data:
             i += 1
             if i < 1:
@@ -134,10 +135,14 @@ class YandexApp(QtWidgets.QMainWindow):
             # print(row)
             # print(self.chosenColumn[1])
             value = row[self.chosenColumn[1]]
-            print(value)
+            data.append(value)
+            if i > 100:
+                continue
+            # print(value)
             # shown_data.append(row[self.chosenColumn[1]])
-            # row_label = QLabel(value)
-            # data_content_layout.addWidget(row_label)
+            if len(value) > 0:
+                row_label = QLabel(value)
+                data_content_layout.addWidget(row_label)
 
 
 def main(name):

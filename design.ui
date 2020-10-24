@@ -424,6 +424,62 @@
       <string>Получены следующие данные</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="chooseDataRepresentation_2">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>250</y>
+       <width>321</width>
+       <height>60</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="toolTip">
+      <string>Перейти к выбору отображения данных</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: transparent; color: #888; border: 1px solid #aaa; border-radius: 10px;  font-size: 20px; padding: 9px; </string>
+     </property>
+     <property name="text">
+      <string>СОПОСТАВИТЬ С ПАРАМЕТРОМ</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="chooseDataRepresentation_3">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>180</y>
+       <width>321</width>
+       <height>60</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="toolTip">
+      <string>Перейти к выбору отображения данных</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #000; background: #c3fb12; font-size: 20px; padding: 9px; border-radius: 10px;</string>
+     </property>
+     <property name="text">
+      <string>ПОСТРОИТЬ ГРАФИК</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
